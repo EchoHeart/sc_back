@@ -5,4 +5,9 @@
     <select id="getTeacherByMessage" resultType="com.example.sc_back.bean.Teacher">
         SELECT * FROM teacher WHERE teacher_name = #{teacher_name} AND password= #{password} ;
     </select>
+
+    <insert id="setTeacherByRegister">
+        INSERT INTO teacher(teacher_name, password, telephone, school_name)
+        VALUES (#{teacher_name}, #{password}, #{telephone}, #{school_name});
+    </insert>
 </mapper>

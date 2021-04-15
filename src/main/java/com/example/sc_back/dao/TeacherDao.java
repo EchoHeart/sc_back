@@ -7,4 +7,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TeacherDao {
     public Teacher getTeacherByMessage(@Param("teacher_name") String teacher_name, @Param("password") String password);
+
+    public int setTeacherByRegister(@Param("teacher_name") String teacher_name, @Param("password") String password,
+                                       @Param("telephone") String telephone, @Param("school_name") String school_name);
 }

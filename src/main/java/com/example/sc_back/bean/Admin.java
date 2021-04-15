@@ -48,7 +48,6 @@ public class Admin {
         this.telephone = telephone;
     }
 
-    //方便测试
     @Override
     public String toString() {
         return "Admin{" +
