@@ -10,4 +10,18 @@
         INSERT INTO teacher(teacher_name, password, telephone, school_name)
         VALUES (#{teacher_name}, #{password}, #{telephone}, #{school_name});
     </insert>
+
+    <select id="getAllTeacher" resultType="com.example.sc_back.bean.Teacher">
+        SELECT * FROM teacher
+        <if test="teacher_name != null">
+            WHERE teacher_name LIKE #{teacher_name}
+        </if>
+    </select>
+
+    <select id="getTeacherCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM teacher
+        <if test="teacher_name != null">
+            WHERE teacher_name LIKE #{teacher_name}
+        </if>
+    </select>
 </mapper>

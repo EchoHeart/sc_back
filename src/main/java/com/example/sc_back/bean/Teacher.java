@@ -9,13 +9,15 @@ public class Teacher {
     private String password;//老师密码
     private String school_name;//老师所属学校名称
     private String telephone;//老师电话
+    private int state;//登录状态
 
-    public Teacher(int teacher_id, String teacher_name, String password, String school_name, String telephone) {
+    public Teacher(int teacher_id, String teacher_name, String password, String school_name, String telephone, int state) {
         this.teacher_id = teacher_id;
         this.teacher_name = teacher_name;
         this.password = password;
         this.school_name = school_name;
         this.telephone = telephone;
+        this.state = state;
     }
 
     public int getTeacher_id() {
@@ -58,14 +60,11 @@ public class Teacher {
         this.telephone = telephone;
     }
 
-    @Override
-    public String toString() {
-        return "Teacher{" +
-                "teacher_id=" + teacher_id +
-                ", teacher_name='" + teacher_name + '\'' +
-                ", password='" + password + '\'' +
-                ", school_name='" + school_name + '\'' +
-                ", telephone='" + telephone + '\'' +
-                '}';
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
     }
 }

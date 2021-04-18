@@ -2,6 +2,7 @@ package com.example.sc_back.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.example.sc_back.bean.Headmaster;
+import com.example.sc_back.bean.School;
 import com.example.sc_back.bean.Teacher;
 import com.example.sc_back.dao.HeadmasterDao;
 import com.example.sc_back.dao.SchoolDao;
@@ -27,8 +28,11 @@ public class RegisterController {
         String flag = "error";
         int headmaster_response = headmasterDao.setHeadmasterByRegister(
                 headmaster_request.getHeadmaster_name(), headmaster_request.getPassword(),
-                headmaster_request.getTelephone(), headmaster_request.getSchool_name());
-        schoolDao.setSchoolByRegister(headmaster_request.getSchool_name());
+                headmaster_request.getTelephone(), headmaster_request.getSchool_name(), 0);
+        School school = schoolDao.getSchoolByName(headmaster_request.getSchool_name());
+
+        if(school == null)
+            schoolDao.setSchoolByRegister(headmaster_request.getSchool_name());
 
         if (headmaster_response == 1)
             flag = "ok";

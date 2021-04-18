@@ -6,5 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AdminDao {
-    public Admin getAdminByMessage(@Param("admin_name") String admin_name, @Param("password") String password);
+    //获取管理员信息
+    public Admin getAdminByMessage(@Param("admin_name") String admin_name,
+                                   @Param("password") String password);
 }

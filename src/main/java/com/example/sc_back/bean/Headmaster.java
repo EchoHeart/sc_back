@@ -9,13 +9,15 @@ public class Headmaster {
     private String password;//校长密码
     private String telephone;//校长电话
     private String school_name;//校长所属学校名称
+    private int state;//注册状态
 
-    public Headmaster(int headmaster_id, String headmaster_name, String password, String telephone, String school_name) {
+    public Headmaster(int headmaster_id, String headmaster_name, String password, String telephone, String school_name, int state) {
         this.headmaster_id = headmaster_id;
         this.headmaster_name = headmaster_name;
         this.password = password;
         this.telephone = telephone;
         this.school_name = school_name;
+        this.state = state;
     }
 
     public int getHeadmaster_id() {
@@ -58,14 +60,12 @@ public class Headmaster {
         this.school_name = school_name;
     }
 
-    @Override
-    public String toString() {
-        return "Headmaster{" +
-                "headmaster_id=" + headmaster_id +
-                ", headmaster_name='" + headmaster_name + '\'' +
-                ", password='" + password + '\'' +
-                ", telephone='" + telephone + '\'' +
-                ", school_name='" + school_name + '\'' +
-                '}';
+    public int getState() {
+        return state;
     }
+
+    public void setState(int state) {
+        this.state = state;
+    }
+
 }

@@ -7,7 +7,22 @@
     </select>
 
     <insert id="setHeadmasterByRegister">
-        INSERT INTO headmaster(headmaster_name, password, telephone, school_name)
-        VALUES (#{headmaster_name}, #{password}, #{telephone}, #{school_name});
+        INSERT INTO headmaster(headmaster_name, password, telephone, school_name, state)
+        VALUES (#{headmaster_name}, #{password}, #{telephone}, #{school_name}, #{state});
     </insert>
+    
+    <select id="getAllHeadmaster" resultType="com.example.sc_back.bean.Headmaster">
+        SELECT * FROM headmaster
+        <if test="headmaster_name != null">
+            WHERE headmaster_name LIKE #{headmaster_name}
+        </if>
+        LIMIT #{pageStart},#{pageSize}
+    </select>
+
+    <select id="getHeadmasterCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM headmaster
+        <if test="headmaster_name != null">
+            WHERE headmaster_name LIKE #{headmaster_name}
+        </if>
+    </select>
 </mapper>
