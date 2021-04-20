@@ -1,12 +1,12 @@
 package com.example.sc_back.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.example.sc_back.bean.Headmaster;
-import com.example.sc_back.bean.QueryInfo;
-import com.example.sc_back.bean.Teacher;
+import com.example.sc_back.bean.*;
+import com.example.sc_back.dao.AdminDao;
 import com.example.sc_back.dao.HeadmasterDao;
 import com.example.sc_back.dao.TeacherDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,6 +19,8 @@ public class UserController {
     private HeadmasterDao headmasterDao;
     @Autowired
     private TeacherDao teacherDao;
+    @Autowired
+    private AdminDao adminDao;
 
     @RequestMapping("/getHeadmaster")
     public String getHeadmaster(QueryInfo queryInfo){
@@ -42,6 +44,38 @@ public class UserController {
                 "%"+queryInfo.getQuery()+"%",pageStart, queryInfo.getPageSize());
 
         return response_info(teacher_count,teacher_list);
+    }
+
+    @RequestMapping ("/editTelephone")
+    public String editTelephone(@RequestBody UserInfo userInfo){
+        int flag = 0;
+        if(userInfo.getIdentity().equals("管理员"))
+            flag = adminDao.editAdminByTelephone(userInfo.getName(), userInfo.getTelephone());
+        if(userInfo.getIdentity().equals("校长"))
+            flag = headmasterDao.editHeadmasterByTelephone(userInfo.getName(), userInfo.getTelephone());
+        if(userInfo.getIdentity().equals("老师"))
+            flag = teacherDao.editTeacherByTelephone(userInfo.getName(), userInfo.getTelephone());
+
+        if(flag == 1)
+            return "ok";
+        else
+            return "error";
+    }
+
+    @RequestMapping("/editPassword")
+    public String editPassword(@RequestBody UserInfo userInfo){
+        int flag = 0;
+        if(userInfo.getIdentity().equals("管理员"))
+            flag = adminDao.editAdminByPassword(userInfo.getName(), userInfo.getPassword());
+        if(userInfo.getIdentity().equals("校长"))
+            flag = headmasterDao.editHeadmasterByPassword(userInfo.getName(), userInfo.getPassword());
+        if(userInfo.getIdentity().equals("老师"))
+            flag = teacherDao.editTeacherByPassword(userInfo.getName(), userInfo.getPassword());
+
+        if(flag == 1)
+            return "ok";
+        else
+            return "error";
     }
 
     public String response_info(int count, Object object){

@@ -25,4 +25,12 @@
             WHERE headmaster_name LIKE #{headmaster_name}
         </if>
     </select>
+
+    <update id="editHeadmasterByTelephone">
+        UPDATE headmaster SET telephone = #{telephone} WHERE headmaster_name = #{headmaster_name}
+    </update>
+
+    <update id="editHeadmasterByPassword">
+        UPDATE headmaster SET password = #{password} WHERE headmaster_name = #{headmaster_name}
+    </update>
 </mapper>

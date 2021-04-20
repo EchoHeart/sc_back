@@ -23,4 +23,10 @@ public interface TeacherDao {
 
     //获取老师人数
     public int getTeacherCount(@Param("teacher_name") String teacher_name);
+
+    public int editTeacherByTelephone(@Param("teacher_name") String teacher_name,
+                                      @Param("telephone") String telephone);
+
+    public int editTeacherByPassword(@Param("teacher_name") String teacher_name,
+                                      @Param("password") String password);
 }

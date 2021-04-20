@@ -24,4 +24,12 @@
             WHERE teacher_name LIKE #{teacher_name}
         </if>
     </select>
+
+    <update id="editTeacherByTelephone">
+        UPDATE teacher SET telephone = #{telephone} WHERE teacher_name = #{teacher_name}
+    </update>
+
+    <update id="editTeacherByPassword">
+        UPDATE teacher SET password = #{password} WHERE teacher_name = #{teacher_name}
+    </update>
 </mapper>

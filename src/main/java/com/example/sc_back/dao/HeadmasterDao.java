@@ -26,4 +26,11 @@ public interface HeadmasterDao {
 
     //获取校长人数
     public int getHeadmasterCount(@Param("headmaster_name") String headmaster_name);
+
+
+    public int editHeadmasterByTelephone(@Param("headmaster_name") String headmaster_name,
+                                         @Param("telephone") String telephone);
+
+    public int editHeadmasterByPassword(@Param("headmaster_name") String headmaster_name,
+                                         @Param("password") String password);
 }

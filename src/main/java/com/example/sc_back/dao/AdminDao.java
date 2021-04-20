@@ -9,4 +9,10 @@ public interface AdminDao {
     //获取管理员信息
     public Admin getAdminByMessage(@Param("admin_name") String admin_name,
                                    @Param("password") String password);
+
+    public int editAdminByTelephone(@Param("admin_name") String admin_name,
+                                    @Param("telephone") String telephone);
+
+    public int editAdminByPassword(@Param("admin_name") String admin_name,
+                                   @Param("password") String password);
 }

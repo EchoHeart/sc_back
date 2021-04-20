@@ -5,4 +5,12 @@
     <select id="getAdminByMessage" resultType="com.example.sc_back.bean.Admin">
         SELECT * FROM admin WHERE admin_name = #{admin_name} AND password= #{password} ;
     </select>
+
+    <update id="editAdminByTelephone">
+        UPDATE admin SET telephone = #{telephone} WHERE admin_name = #{admin_name}
+    </update>
+
+    <update id="editAdminByPassword">
+        UPDATE admin SET password = #{password} WHERE admin_name = #{admin_name}
+    </update>
 </mapper>
