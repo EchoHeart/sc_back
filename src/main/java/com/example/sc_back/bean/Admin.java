@@ -48,13 +48,4 @@ public class Admin {
         this.telephone = telephone;
     }
 
-    @Override
-    public String toString() {
-        return "Admin{" +
-                "admin_id=" + admin_id +
-                ", admin_name='" + admin_name + '\'' +
-                ", password='" + password + '\'' +
-                ", telephone='" + telephone + '\'' +
-                '}';
-    }
 }

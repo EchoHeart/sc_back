@@ -35,12 +35,4 @@ public class QueryInfo {
         this.pageSize = pageSize;
     }
 
-    @Override
-    public String toString() {
-        return "QueryInfo{" +
-                "query='" + query + '\'' +
-                ", pageNum=" + pageNum +
-                ", pageSize=" + pageSize +
-                '}';
-    }
 }
