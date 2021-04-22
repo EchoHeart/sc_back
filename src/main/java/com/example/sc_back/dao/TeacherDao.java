@@ -30,4 +30,9 @@ public interface TeacherDao {
 
     public int editTeacherByPassword(@Param("teacher_name") String teacher_name,
                                       @Param("password") String password);
+
+    public List<String> getTeacherByState(@Param("state") int state);
+
+    public int editTeacherByState(@Param("teacher_name") String teacher_name,
+                                  @Param("state") int state);
 }

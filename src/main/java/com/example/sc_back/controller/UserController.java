@@ -78,6 +78,44 @@ public class UserController {
             return "error";
     }
 
+    @RequestMapping("/getHeadmasterByState")
+    public String getHeadmasterByState(){
+        List<String> headmasterList = headmasterDao.getHeadmasterByState(0);
+        return JSON.toJSONString(headmasterList);
+    }
+
+    @RequestMapping("/getTeacherByState")
+    public String getTeacherByState(){
+        List<String> teacherList = teacherDao.getTeacherByState(0);
+        return JSON.toJSONString(teacherList);
+    }
+
+    @RequestMapping("/editHeadmasterByState")
+    public String editHeadmasterByState(@RequestBody String[] headmaster_return){
+        String flag = "ok";
+        for(int i=0; i<headmaster_return.length; i++){
+            if(headmasterDao.editHeadmasterByState(headmaster_return[i],1) == 1)
+                continue;
+            else
+                flag = "error";
+        }
+
+        return flag;
+    }
+
+    @RequestMapping("/editTeacherByState")
+    public String editTeacherByState(@RequestBody String[] teacher_return){
+        String flag = "ok";
+        for(int i=0; i<teacher_return.length; i++){
+            if(teacherDao.editTeacherByState(teacher_return[i],1) == 1)
+                continue;
+            else
+                flag = "error";
+        }
+
+        return flag;
+    }
+
     public String response_info(int count, Object object){
         HashMap<String, Object> res = new HashMap<>();
         res.put("count",count);

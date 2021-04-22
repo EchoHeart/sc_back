@@ -33,4 +33,9 @@ public interface HeadmasterDao {
 
     public int editHeadmasterByPassword(@Param("headmaster_name") String headmaster_name,
                                          @Param("password") String password);
+
+    public List<String> getHeadmasterByState(@Param("state") int state);
+
+    public int editHeadmasterByState(@Param("headmaster_name") String headmaster_name,
+                                     @Param("state") int state);
 }

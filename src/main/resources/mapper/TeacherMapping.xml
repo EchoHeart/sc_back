@@ -16,6 +16,7 @@
         <if test="teacher_name != null">
             WHERE teacher_name LIKE #{teacher_name}
         </if>
+        LIMIT #{pageStart},#{pageSize}
     </select>
 
     <select id="getTeacherCount" resultType="java.lang.Integer">
@@ -31,5 +32,13 @@
 
     <update id="editTeacherByPassword">
         UPDATE teacher SET password = #{password} WHERE teacher_name = #{teacher_name}
+    </update>
+
+    <select id="getTeacherByState" resultType="java.lang.String">
+        SELECT teacher_name FROM teacher WHERE state = #{state}
+    </select>
+
+    <update id="editTeacherByState">
+        UPDATE teacher SET state = #{state} WHERE teacher_name = #{teacher_name}
     </update>
 </mapper>

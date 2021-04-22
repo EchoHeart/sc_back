@@ -10,7 +10,7 @@
         INSERT INTO headmaster(headmaster_name, password, telephone, school_name, state)
         VALUES (#{headmaster_name}, #{password}, #{telephone}, #{school_name}, #{state});
     </insert>
-    
+
     <select id="getAllHeadmaster" resultType="com.example.sc_back.bean.Headmaster">
         SELECT * FROM headmaster
         <if test="headmaster_name != null">
@@ -32,5 +32,13 @@
 
     <update id="editHeadmasterByPassword">
         UPDATE headmaster SET password = #{password} WHERE headmaster_name = #{headmaster_name}
+    </update>
+
+    <select id="getHeadmasterByState" resultType="java.lang.String">
+        SELECT headmaster_name FROM headmaster WHERE state = #{state}
+    </select>
+
+    <update id="editHeadmasterByState">
+        UPDATE headmaster SET state = #{state} WHERE headmaster_name = #{headmaster_name}
     </update>
 </mapper>
