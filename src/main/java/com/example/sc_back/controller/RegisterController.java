@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
+import java.util.List;
 
 @RestController
 public class RegisterController {
@@ -29,9 +29,8 @@ public class RegisterController {
         int headmaster_response = headmasterDao.setHeadmasterByRegister(
                 headmaster_request.getHeadmaster_name(), headmaster_request.getPassword(),
                 headmaster_request.getTelephone(), headmaster_request.getSchool_name(), 0);
-        School school = schoolDao.getSchoolByName(headmaster_request.getSchool_name());
 
-        if(school == null)
+        if(schoolDao.getSchoolByName(headmaster_request.getSchool_name()) == null)
             schoolDao.setSchoolByRegister(headmaster_request.getSchool_name());
 
         if (headmaster_response == 1)
@@ -45,11 +44,17 @@ public class RegisterController {
         if (schoolDao.getSchoolByName(teacher_request.getSchool_name()) != null){
             int teacher_response = teacherDao.setTeacherByRegister(
                     teacher_request.getTeacher_name(), teacher_request.getPassword(),
-                    teacher_request.getTelephone(), teacher_request.getSchool_name());
+                    teacher_request.getTelephone(), teacher_request.getSchool_name(), 0);
             if (teacher_response == 1)
                 flag = "ok";
         }
         return JSON.toJSONString(flag);
+    }
+
+    @RequestMapping("/getSchool")
+    public String getSchool(){
+        List<String> school_name = schoolDao.getAllSchoolName();
+        return JSON.toJSONString(school_name);
     }
 
 }

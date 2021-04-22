@@ -14,7 +14,8 @@ public interface TeacherDao {
     public int setTeacherByRegister(@Param("teacher_name") String teacher_name,
                                     @Param("password") String password,
                                     @Param("telephone") String telephone,
-                                    @Param("school_name") String school_name);
+                                    @Param("school_name") String school_name,
+                                    @Param("state") int state);
 
     //获取老师列表
     public List<Teacher> getAllTeacher(@Param("teacher_name") String teacher_name,

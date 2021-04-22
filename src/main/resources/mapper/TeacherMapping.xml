@@ -7,8 +7,8 @@
     </select>
 
     <insert id="setTeacherByRegister">
-        INSERT INTO teacher(teacher_name, password, telephone, school_name)
-        VALUES (#{teacher_name}, #{password}, #{telephone}, #{school_name});
+        INSERT INTO teacher(teacher_name, password, telephone, school_name, state)
+        VALUES (#{teacher_name}, #{password}, #{telephone}, #{school_name}, #{state});
     </insert>
 
     <select id="getAllTeacher" resultType="com.example.sc_back.bean.Teacher">
