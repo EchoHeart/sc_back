@@ -41,4 +41,8 @@
     <update id="editTeacherByState">
         UPDATE teacher SET state = #{state} WHERE teacher_name = #{teacher_name}
     </update>
+
+    <delete id="deleteTeacher">
+        DELETE FROM teacher WHERE teacher_id = #{teacher_id}
+    </delete>
 </mapper>

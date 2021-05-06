@@ -23,21 +23,24 @@ public class RegisterController {
     @Autowired
     TeacherDao teacherDao;
 
+    //校长注册
     @RequestMapping("/headmasterRegister")
     public String headmasterRegister(@RequestBody Headmaster headmaster_request){
         String flag = "error";
-        int headmaster_response = headmasterDao.setHeadmasterByRegister(
-                headmaster_request.getHeadmaster_name(), headmaster_request.getPassword(),
-                headmaster_request.getTelephone(), headmaster_request.getSchool_name(), 0);
 
         if(schoolDao.getSchoolByName(headmaster_request.getSchool_name()) == null)
             schoolDao.setSchoolByRegister(headmaster_request.getSchool_name());
+
+        int headmaster_response = headmasterDao.setHeadmasterByRegister(
+                headmaster_request.getHeadmaster_name(), headmaster_request.getPassword(),
+                headmaster_request.getTelephone(), headmaster_request.getSchool_name(), 0);
 
         if (headmaster_response == 1)
             flag = "ok";
         return JSON.toJSONString(flag);
     }
 
+    //老师注册
     @RequestMapping("/teacherRegister")
     public String teacherRegister(@RequestBody Teacher teacher_request){
         String flag = "error";
@@ -51,6 +54,7 @@ public class RegisterController {
         return JSON.toJSONString(flag);
     }
 
+    //老师注册表单获取当前学校
     @RequestMapping("/getSchool")
     public String getSchool(){
         List<String> school_name = schoolDao.getAllSchoolName();

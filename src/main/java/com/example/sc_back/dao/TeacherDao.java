@@ -8,9 +8,11 @@ import java.util.List;
 
 @Repository
 public interface TeacherDao {
+    //老师登录
     public Teacher getTeacherByMessage(@Param("teacher_name") String teacher_name,
                                        @Param("password") String password);
 
+    //老师注册
     public int setTeacherByRegister(@Param("teacher_name") String teacher_name,
                                     @Param("password") String password,
                                     @Param("telephone") String telephone,
@@ -25,14 +27,21 @@ public interface TeacherDao {
     //获取老师人数
     public int getTeacherCount(@Param("teacher_name") String teacher_name);
 
+    //编辑电话号码
     public int editTeacherByTelephone(@Param("teacher_name") String teacher_name,
                                       @Param("telephone") String telephone);
 
+    //修改密码
     public int editTeacherByPassword(@Param("teacher_name") String teacher_name,
                                       @Param("password") String password);
 
+    //按状态获取老师
     public List<String> getTeacherByState(@Param("state") int state);
 
+    //编辑老师状态
     public int editTeacherByState(@Param("teacher_name") String teacher_name,
                                   @Param("state") int state);
+
+    //删除老师
+    public int deleteTeacher(int teacher_id);
 }

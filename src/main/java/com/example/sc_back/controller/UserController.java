@@ -22,6 +22,7 @@ public class UserController {
     @Autowired
     private AdminDao adminDao;
 
+    //获取所有校长
     @RequestMapping("/getHeadmaster")
     public String getHeadmaster(QueryInfo queryInfo){
         int headmaster_count = headmasterDao.getHeadmasterCount(
@@ -34,6 +35,7 @@ public class UserController {
         return response_info(headmaster_count,headmaster_list);
     }
 
+    //获取所有老师
     @RequestMapping("/getTeacher")
     public String getTeacher(QueryInfo queryInfo){
         int teacher_count = teacherDao.getTeacherCount(
@@ -46,6 +48,7 @@ public class UserController {
         return response_info(teacher_count,teacher_list);
     }
 
+    //修改个人电话号码
     @RequestMapping ("/editTelephone")
     public String editTelephone(@RequestBody UserInfo userInfo){
         int flag = 0;
@@ -62,6 +65,7 @@ public class UserController {
             return "error";
     }
 
+    //修改个人密码
     @RequestMapping("/editPassword")
     public String editPassword(@RequestBody UserInfo userInfo){
         int flag = 0;
@@ -78,18 +82,21 @@ public class UserController {
             return "error";
     }
 
+    //获取待审核校长列表
     @RequestMapping("/getHeadmasterByState")
     public String getHeadmasterByState(){
         List<String> headmasterList = headmasterDao.getHeadmasterByState(0);
         return JSON.toJSONString(headmasterList);
     }
 
+    //获取待审核老师列表
     @RequestMapping("/getTeacherByState")
     public String getTeacherByState(){
         List<String> teacherList = teacherDao.getTeacherByState(0);
         return JSON.toJSONString(teacherList);
     }
 
+    //编辑校长审核状态
     @RequestMapping("/editHeadmasterByState")
     public String editHeadmasterByState(@RequestBody String[] headmaster_return){
         String flag = "ok";
@@ -103,6 +110,7 @@ public class UserController {
         return flag;
     }
 
+    //编辑老师审核状态
     @RequestMapping("/editTeacherByState")
     public String editTeacherByState(@RequestBody String[] teacher_return){
         String flag = "ok";
@@ -114,6 +122,26 @@ public class UserController {
         }
 
         return flag;
+    }
+
+    //删除校长
+    @RequestMapping("/deleteHeadmaster")
+    public String deleteHeadmaster(int headmaster_id){
+        int flag = headmasterDao.deleteHeadmaster(headmaster_id);
+        if(flag == 1)
+            return "ok";
+        else
+            return "error";
+    }
+
+    //删除老师
+    @RequestMapping("/deleteTeacher")
+    public String deleteTeacher(int teacher_id){
+        int flag = teacherDao.deleteTeacher(teacher_id);
+        if(flag == 1)
+            return "ok";
+        else
+            return "error";
     }
 
     public String response_info(int count, Object object){

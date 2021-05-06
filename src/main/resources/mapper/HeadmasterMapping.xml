@@ -41,4 +41,8 @@
     <update id="editHeadmasterByState">
         UPDATE headmaster SET state = #{state} WHERE headmaster_name = #{headmaster_name}
     </update>
+
+    <delete id="deleteHeadmaster">
+        DELETE FROM headmaster WHERE headmaster_id = #{headmaster_id}
+    </delete>
 </mapper>
