@@ -18,4 +18,7 @@
         SELECT service_type FROM school WHERE school_name = #{school_name}
     </select>
 
+    <select id="getEndTime" resultType="java.lang.String">
+        SELECT end_time FROM school WHERE school_name = #{school_name}
+    </select>
 </mapper>

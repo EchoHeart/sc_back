@@ -18,4 +18,7 @@ public interface SchoolDao {
 
     //获取学校购买的套餐
     public String getServiceType(@Param("school_name") String school_name);
+
+    //获取学校购买的套餐的截止日期
+    public String getEndTime(@Param("school_name") String school_name);
 }

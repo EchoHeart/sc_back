@@ -8,7 +8,7 @@ import java.util.List;
 
 @Repository
 public interface HeadmasterDao {
-    //获取校长信息
+    //校长登录
     public Headmaster getHeadmasterByMessage(@Param("headmaster_name") String headmaster_name,
                                              @Param("password") String password);
 
@@ -28,16 +28,21 @@ public interface HeadmasterDao {
     public int getHeadmasterCount(@Param("headmaster_name") String headmaster_name);
 
 
+    //编辑电话号码
     public int editHeadmasterByTelephone(@Param("headmaster_name") String headmaster_name,
                                          @Param("telephone") String telephone);
 
+    //修改密码
     public int editHeadmasterByPassword(@Param("headmaster_name") String headmaster_name,
                                          @Param("password") String password);
 
+    //按状态获取校长
     public List<String> getHeadmasterByState(@Param("state") int state);
 
+    //编辑校长状态
     public int editHeadmasterByState(@Param("headmaster_name") String headmaster_name,
                                      @Param("state") int state);
 
-    public int deleteHeadmaster(@Param("headmaster_id") int headmaster_id);
+    //删除校长
+    public int deleteHeadmaster(int headmaster_id);
 }

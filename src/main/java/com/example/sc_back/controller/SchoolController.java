@@ -20,4 +20,9 @@ public class SchoolController {
         else
             return result;
     }
+
+    @RequestMapping("/getEndTime")
+    public String getEndTime(String school_name){
+        return schoolDao.getEndTime(school_name);
+    }
 }

@@ -19,4 +19,6 @@ public interface ServiceDao {
 
     //获取套餐信息
     public String getServiceInfo(@Param("service_type") char service_type);
+
+
 }
