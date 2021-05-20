@@ -3,9 +3,13 @@ spring:
   datasource:
     #MySQL配置
     driverClassName: com.mysql.cj.jdbc.Driver
+#    酌情更改
+#    url: jdbc:mysql://122.9.144.196:3306/security_circle?useUnicode=true&characterEncoding=UTF-8
     url: jdbc:mysql://localhost:3306/security_circle?useUnicode=true&characterEncoding=UTF-8
     username: root
     password: root
+#  mvc:
+#    static-path-pattern: /static/**
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
