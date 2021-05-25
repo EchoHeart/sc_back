@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.sc_back.dao.QuestionDao">
+    <select id="getAllQuestion" resultType="com.example.sc_back.bean.Question">
+        SELECT * FROM question
+        <if test="question_description != null">
+            WHERE question_description LIKE #{question_description}
+        </if>
+        LIMIT #{pageStart},#{pageSize}
+    </select>
+
+    <select id="getQuestionCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM question
+        <if test="question_description != null">
+            WHERE question_description LIKE #{question_description}
+        </if>
+    </select>
+
+    <insert id="addQuestion">
+        INSERT INTO question(game_type, question_description, option_A_description, option_B_description, option_C_description, option_D_description, question_answer)
+        VALUES (#{game_type}, #{question_description}, #{option_A_description}, #{option_B_description}, #{option_C_description}, #{option_D_description}, #{question_answer})
+    </insert>
+
+    <delete id="deleteQuestion">
+        DELETE FROM question WHERE question_id = #{question_id}
+    </delete>
+</mapper>
