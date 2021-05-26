@@ -45,4 +45,8 @@
     <delete id="deleteTeacher">
         DELETE FROM teacher WHERE teacher_id = #{teacher_id}
     </delete>
+
+    <select id="getTeacherNum" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM teacher WHERE school_name = #{school_name}
+    </select>
 </mapper>

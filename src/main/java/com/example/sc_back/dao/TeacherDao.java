@@ -44,4 +44,7 @@ public interface TeacherDao {
 
     //删除老师
     public int deleteTeacher(int teacher_id);
+
+    //获取学校老师人数
+    public int getTeacherNum(@Param("school_name") String school_name);
 }

@@ -38,6 +38,4 @@ public interface HeadmasterDao {
 
     public int editHeadmasterByState(@Param("headmaster_name") String headmaster_name,
                                      @Param("state") int state);
-
-    public int deleteHeadmaster(int headmaster_id);
 }

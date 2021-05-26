@@ -20,4 +20,11 @@ public interface UserDao {
                        @Param("teacher_name") String teacher_name,
                        @Param("user_grade") int user_grade,
                        @Param("user_class") int user_class);
+
+    //获取学校学生人数
+    public int getUserNum(@Param("school_name") String school_name);
+
+    //获取游戏平均分
+    public String getAverageScore(@Param("game_type") String game_type,
+                                 @Param("play_date") String play_date);
 }

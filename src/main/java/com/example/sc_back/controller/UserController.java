@@ -176,6 +176,28 @@ public class UserController {
             return "error";
     }
 
+    @RequestMapping("/getStudentNum")
+    public String getStudentNum(String school_name){
+        int count = userDao.getUserNum(school_name);
+        return response_info(count,"ok");
+    }
+
+    @RequestMapping("/getTeacherNum")
+    public String getTeacherNum(String school_name){
+        int count = teacherDao.getTeacherNum(school_name);
+        return response_info(count,"ok");
+    }
+
+    @RequestMapping("/getAverageScore")
+    public String getAverageScore(String game_type, String play_date){
+        if(userDao.getAverageScore(game_type, play_date) == null)
+            return "0";
+        else{
+            String averageScore = userDao.getAverageScore(game_type, play_date);
+            return averageScore;
+        }
+    }
+
     public String response_info(int count, Object object){
         HashMap<String, Object> res = new HashMap<>();
         res.put("count",count);
