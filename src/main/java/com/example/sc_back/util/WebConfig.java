@@ -2,11 +2,11 @@ package com.example.sc_back.util;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-//全局配置类--配置跨域请求
+//全局配置类--配置跨域请求 前后端耦合后就不用跨域，酌情注释
 @Configuration
-public class WebConfig extends WebMvcConfigurerAdapter {
+public class WebConfig implements WebMvcConfigurer {
 
     /**
      * 1. 访问路径
@@ -19,8 +19,9 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addCorsMappings(CorsRegistry registry){
         registry.addMapping("/**")
-                .allowedOrigins("Http://localhost:8080","null")
-                .allowedMethods("GET","POST","PUT","OPTIONS","DELETE")
+                //!!!
+                .allowedOrigins("http://localhost:8080")
+                .allowedMethods("*")
                 .allowCredentials(true)
                 .maxAge(3600);
     }

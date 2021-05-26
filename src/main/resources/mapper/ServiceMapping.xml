@@ -5,4 +5,13 @@
     <select id="getAllService" resultType="com.example.sc_back.bean.Service">
         SELECT * FROM service
     </select>
+
+    <insert id="addService">
+        INSERT INTO service(service_type, service_price, service_infor, service_usable_time)
+        VALUES (#{service_type}, #{service_price}, #{service_infor}, #{service_usable_time})
+    </insert>
+
+    <select id="getServiceInfo" resultType="java.lang.String">
+        SELECT service_infor FROM service WHERE service_type = #{service_type}
+    </select>
 </mapper>

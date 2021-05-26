@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.sc_back.dao.LessonDao">
+    <insert id="addLesson">
+        INSERT INTO lesson(lesson_name, teacher_name, school_name, lesson_date, lesson_time, class_infor)
+        VALUES (#{lesson_name},#{teacher_name},#{school_name},#{lesson_date},#{lesson_time}, #{class_infor})
+    </insert>
+
+    <select id="getLesson" resultType="com.example.sc_back.bean.Lesson">
+        SELECT * FROM lesson
+        WHERE school_name = #{school_name} AND lesson_date = #{lesson_date}
+    </select>
+
+    <delete id="deleteLesson">
+        DELETE FROM lesson WHERE teacher_name = #{teacher_name} AND lesson_date = #{lesson_date} AND lesson_time = #{lesson_time}
+    </delete>
+</mapper>

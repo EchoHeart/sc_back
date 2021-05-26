@@ -1,22 +1,20 @@
 package com.example.sc_back.bean;
 
-import java.util.Date;
-
 public class School {
     private String school_name;
     private String school_address;
     private String school_type;
-    private char service_type;
-    private Date usable_time;
-    private int is_usable;
+    private String service_type;
+    private String start_time;
+    private String end_time;
 
-    public School(String school_name, String school_address, String school_type, char service_type, Date usable_time, int is_usable) {
+    public School(String school_name, String school_address, String school_type, String service_type, String start_time, String end_time) {
         this.school_name = school_name;
         this.school_address = school_address;
         this.school_type = school_type;
         this.service_type = service_type;
-        this.usable_time = usable_time;
-        this.is_usable = is_usable;
+        this.start_time = start_time;
+        this.end_time = end_time;
     }
 
     public String getSchool_name() {
@@ -43,27 +41,27 @@ public class School {
         this.school_type = school_type;
     }
 
-    public char getService_type() {
+    public String getService_type() {
         return service_type;
     }
 
-    public void setService_type(char service_type) {
+    public void setService_type(String service_type) {
         this.service_type = service_type;
     }
 
-    public Date getUsable_time() {
-        return usable_time;
+    public String getStart_time() {
+        return start_time;
     }
 
-    public void setUsable_time(Date usable_time) {
-        this.usable_time = usable_time;
+    public void setStart_time(String start_time) {
+        this.start_time = start_time;
     }
 
-    public int getIs_usable() {
-        return is_usable;
+    public String getEnd_time() {
+        return end_time;
     }
 
-    public void setIs_usable(int is_usable) {
-        this.is_usable = is_usable;
+    public void setEnd_time(String end_time) {
+        this.end_time = end_time;
     }
 }

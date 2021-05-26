@@ -5,6 +5,7 @@ import com.example.sc_back.bean.*;
 import com.example.sc_back.dao.AdminDao;
 import com.example.sc_back.dao.HeadmasterDao;
 import com.example.sc_back.dao.TeacherDao;
+import com.example.sc_back.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,8 @@ public class UserController {
     private TeacherDao teacherDao;
     @Autowired
     private AdminDao adminDao;
+    @Autowired
+    private UserDao userDao;
 
     //获取所有校长
     @RequestMapping("/getHeadmaster")
@@ -46,6 +49,35 @@ public class UserController {
                 "%"+queryInfo.getQuery()+"%",pageStart, queryInfo.getPageSize());
 
         return response_info(teacher_count,teacher_list);
+    }
+
+    //通过学校和老师获取学生
+    @RequestMapping("/getUserBySchoolAndTeacher")
+    public String getUserBySchoolAndTeacher(String school_name, String teacher_name){
+        String flag = "error";
+
+        List<User> user_list = userDao.getUserBySchoolAndTeacher(school_name, teacher_name);
+        if(user_list != null)
+            flag = "ok";
+
+        HashMap<String, Object> res = new HashMap<>();
+        res.put("flag",flag);
+        res.put("object",user_list);
+
+        return JSON.toJSONString(res);
+    }
+
+    //添加学生
+    @RequestMapping("/addUser")
+    public String addUser(@RequestBody User user){
+        int flag = 0;
+        flag = userDao.addUser(user.getUser_name(),user.getUser_sex(),user.getUser_age(),
+                               user.getSchool_name(),user.getTeacher_name(),user.getUser_grade(),
+                               user.getUser_class());
+        if(flag == 1)
+            return "ok";
+        else
+            return "error";
     }
 
     //修改个人电话号码
