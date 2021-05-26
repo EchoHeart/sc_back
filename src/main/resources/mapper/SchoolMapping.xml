@@ -21,4 +21,13 @@
     <select id="getEndTime" resultType="java.lang.String">
         SELECT end_time FROM school WHERE school_name = #{school_name}
     </select>
+
+<!--    <insert id="buyService">-->
+<!--        INSERT INTO school(service_type,start_time,end_time) VALUES (#{service_type},#{start_time},#{end_time})-->
+<!--        WHERE school_name = #{school_name}-->
+<!--    </insert>-->
+    <update id="buyService">
+        UPDATE school SET service_type = #{service_type}, start_time = #{start_time}, end_time = #{end_time}
+        WHERE school_name = #{school_name}
+    </update>
 </mapper>

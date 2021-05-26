@@ -21,4 +21,10 @@ public interface SchoolDao {
 
     //获取学校购买的套餐的截止日期
     public String getEndTime(@Param("school_name") String school_name);
+
+    //购买套餐
+    public int buyService(@Param("school_name") String school_name,
+                             @Param("service_type") String service_type,
+                             @Param("start_time") String start_time,
+                             @Param("end_time") String end_time);
 }

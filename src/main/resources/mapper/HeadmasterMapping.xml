@@ -5,7 +5,6 @@
     <select id="getHeadmasterByMessage" resultType="com.example.sc_back.bean.Headmaster">
         SELECT * FROM headmaster WHERE headmaster_name = #{headmaster_name} AND password= #{password};
     </select>
-
     <insert id="setHeadmasterByRegister">
         INSERT INTO headmaster(headmaster_name, password, telephone, school_name, state)
         VALUES (#{headmaster_name}, #{password}, #{telephone}, #{school_name}, #{state});
